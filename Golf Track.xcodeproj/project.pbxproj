@@ -14,18 +14,10 @@
 		B69EED8024CE0F37007E010A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B69EED7F24CE0F37007E010A /* Preview Assets.xcassets */; };
 		B69EED8324CE0F37007E010A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B69EED8124CE0F37007E010A /* LaunchScreen.storyboard */; };
 		B69EED8E24CE0F37007E010A /* Golf_TrackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69EED8D24CE0F37007E010A /* Golf_TrackTests.swift */; };
-		B69EED9924CE0F37007E010A /* Golf_TrackUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69EED9824CE0F37007E010A /* Golf_TrackUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		B69EED8A24CE0F37007E010A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B69EED6B24CE0F32007E010A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B69EED7224CE0F32007E010A;
-			remoteInfo = "Golf Track";
-		};
-		B69EED9524CE0F37007E010A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B69EED6B24CE0F32007E010A /* Project object */;
 			proxyType = 1;
@@ -46,9 +38,6 @@
 		B69EED8924CE0F37007E010A /* Golf TrackTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Golf TrackTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B69EED8D24CE0F37007E010A /* Golf_TrackTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Golf_TrackTests.swift; sourceTree = "<group>"; };
 		B69EED8F24CE0F37007E010A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B69EED9424CE0F37007E010A /* Golf TrackUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Golf TrackUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B69EED9824CE0F37007E010A /* Golf_TrackUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Golf_TrackUITests.swift; sourceTree = "<group>"; };
-		B69EED9A24CE0F37007E010A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,13 +55,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B69EED9124CE0F37007E010A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -81,7 +63,6 @@
 			children = (
 				B69EED7524CE0F32007E010A /* Golf Track */,
 				B69EED8C24CE0F37007E010A /* Golf TrackTests */,
-				B69EED9724CE0F37007E010A /* Golf TrackUITests */,
 				B69EED7424CE0F32007E010A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -91,7 +72,6 @@
 			children = (
 				B69EED7324CE0F32007E010A /* Golf Track.app */,
 				B69EED8924CE0F37007E010A /* Golf TrackTests.xctest */,
-				B69EED9424CE0F37007E010A /* Golf TrackUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -101,10 +81,8 @@
 			children = (
 				B69EED7624CE0F32007E010A /* AppDelegate.swift */,
 				B69EED7824CE0F32007E010A /* SceneDelegate.swift */,
-				B69EED7A24CE0F32007E010A /* ContentView.swift */,
-				B69EED7C24CE0F37007E010A /* Assets.xcassets */,
-				B69EED8124CE0F37007E010A /* LaunchScreen.storyboard */,
-				B69EED8424CE0F37007E010A /* Info.plist */,
+				B69EEDA724CE0FBC007E010A /* Views */,
+				B69EEDA624CE0F6A007E010A /* Resources */,
 				B69EED7E24CE0F37007E010A /* Preview Content */,
 			);
 			path = "Golf Track";
@@ -127,13 +105,22 @@
 			path = "Golf TrackTests";
 			sourceTree = "<group>";
 		};
-		B69EED9724CE0F37007E010A /* Golf TrackUITests */ = {
+		B69EEDA624CE0F6A007E010A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				B69EED9824CE0F37007E010A /* Golf_TrackUITests.swift */,
-				B69EED9A24CE0F37007E010A /* Info.plist */,
+				B69EED7C24CE0F37007E010A /* Assets.xcassets */,
+				B69EED8124CE0F37007E010A /* LaunchScreen.storyboard */,
+				B69EED8424CE0F37007E010A /* Info.plist */,
 			);
-			path = "Golf TrackUITests";
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		B69EEDA724CE0FBC007E010A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B69EED7A24CE0F32007E010A /* ContentView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -174,24 +161,6 @@
 			productReference = B69EED8924CE0F37007E010A /* Golf TrackTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		B69EED9324CE0F37007E010A /* Golf TrackUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B69EEDA324CE0F37007E010A /* Build configuration list for PBXNativeTarget "Golf TrackUITests" */;
-			buildPhases = (
-				B69EED9024CE0F37007E010A /* Sources */,
-				B69EED9124CE0F37007E010A /* Frameworks */,
-				B69EED9224CE0F37007E010A /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B69EED9624CE0F37007E010A /* PBXTargetDependency */,
-			);
-			name = "Golf TrackUITests";
-			productName = "Golf TrackUITests";
-			productReference = B69EED9424CE0F37007E010A /* Golf TrackUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -205,10 +174,6 @@
 						CreatedOnToolsVersion = 12.0;
 					};
 					B69EED8824CE0F37007E010A = {
-						CreatedOnToolsVersion = 12.0;
-						TestTargetID = B69EED7224CE0F32007E010A;
-					};
-					B69EED9324CE0F37007E010A = {
 						CreatedOnToolsVersion = 12.0;
 						TestTargetID = B69EED7224CE0F32007E010A;
 					};
@@ -229,7 +194,6 @@
 			targets = (
 				B69EED7224CE0F32007E010A /* Golf Track */,
 				B69EED8824CE0F37007E010A /* Golf TrackTests */,
-				B69EED9324CE0F37007E010A /* Golf TrackUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -246,13 +210,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		B69EED8724CE0F37007E010A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B69EED9224CE0F37007E010A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -280,14 +237,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B69EED9024CE0F37007E010A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B69EED9924CE0F37007E010A /* Golf_TrackUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -295,11 +244,6 @@
 			isa = PBXTargetDependency;
 			target = B69EED7224CE0F32007E010A /* Golf Track */;
 			targetProxy = B69EED8A24CE0F37007E010A /* PBXContainerItemProxy */;
-		};
-		B69EED9624CE0F37007E010A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B69EED7224CE0F32007E010A /* Golf Track */;
-			targetProxy = B69EED9524CE0F37007E010A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -440,7 +384,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Golf Track/Preview Content\"";
 				DEVELOPMENT_TEAM = J6B8ZX28ZW;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "Golf Track/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Golf Track/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -461,7 +405,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Golf Track/Preview Content\"";
 				DEVELOPMENT_TEAM = J6B8ZX28ZW;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "Golf Track/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Golf Track/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -517,46 +461,6 @@
 			};
 			name = Release;
 		};
-		B69EEDA424CE0F37007E010A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = J6B8ZX28ZW;
-				INFOPLIST_FILE = "Golf TrackUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "oskman.Golf-TrackUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Golf Track";
-			};
-			name = Debug;
-		};
-		B69EEDA524CE0F37007E010A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = J6B8ZX28ZW;
-				INFOPLIST_FILE = "Golf TrackUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "oskman.Golf-TrackUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Golf Track";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -583,15 +487,6 @@
 			buildConfigurations = (
 				B69EEDA124CE0F37007E010A /* Debug */,
 				B69EEDA224CE0F37007E010A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B69EEDA324CE0F37007E010A /* Build configuration list for PBXNativeTarget "Golf TrackUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B69EEDA424CE0F37007E010A /* Debug */,
-				B69EEDA524CE0F37007E010A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
