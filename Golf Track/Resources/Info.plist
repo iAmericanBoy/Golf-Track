@@ -22,6 +22,8 @@
 	<true/>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>GolfTrack needs access to your location in order to record and track your golf trip!</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>GolfTrack needs access to your location in order to record and track your golf trip!</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

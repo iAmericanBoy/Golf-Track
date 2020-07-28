@@ -21,7 +21,7 @@ class TripManager {
         self.locationManager = locationManager
     }
     
-    /// Checks if Location permission has benn given and Starts Trip after permission was givven
+    /// Checks if Location permission has been given and Starts Trip after permission was givven
     func startTrip() {
         locationManager.completion = { [self] permissionResult in
             switch permissionResult {
@@ -31,6 +31,8 @@ class TripManager {
                 print(error)
             }
         }
+        
+        locationManager.requestPermission()
     }
     
     /// ends a Trip
