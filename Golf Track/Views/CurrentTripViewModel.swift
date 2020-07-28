@@ -7,8 +7,18 @@
 
 import Combine
 
-class CurrentTripViewModel {
-    
+class CurrentTripViewModel: ObservableObject {
+    private let tripManager: TripManager
+
+    init(tripManager: TripManager = TripManager()) {
+        self.tripManager = tripManager
+    }
+
+    func startTrip() {
+        tripManager.startTrip()
+    }
+
+    func endTrip() {
+        tripManager.endTrip()
+    }
 }
-
-
