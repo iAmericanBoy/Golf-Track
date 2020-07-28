@@ -8,16 +8,26 @@
 import SwiftUI
 
 struct CurrentTripView: View {
-    
     @ObservedObject var viewModel = CurrentTripViewModel()
 
     var body: some View {
-        Button("Start", action: startTrip)
+        VStack {
+            Text(viewModel.locations)
+            HStack {
+                Button("Start", action: startTrip)
+                Spacer()
+                Button("End", action: endTrip)
+            }
+            .padding()
+        }
     }
-    
-    
+
     private func startTrip() {
         viewModel.startTrip()
+    }
+
+    private func endTrip() {
+        viewModel.endTrip()
     }
 }
 

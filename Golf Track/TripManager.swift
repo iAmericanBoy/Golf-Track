@@ -12,10 +12,10 @@ class TripManager {
     private var startDate: Date?
     private var distance: Measurement<UnitLength>?
     private var locationList: [CLLocation] = []
-    
     private var locationManager: LocationManager
-    
     private var cancelableLocationPublisher: AnyCancellable?
+    
+    let locationPipline = PassthroughSubject<CLLocation, Never>()
     
     init(locationManager: LocationManager = LocationManager.shared) {
         self.locationManager = locationManager
@@ -57,6 +57,7 @@ class TripManager {
     private func subscibeToLocationUpdates() {
         cancelableLocationPublisher = locationManager.publisher.sink(receiveCompletion: onLocationPublisherCompletion) { location in
             self.locationList.append(location)
+            self.locationPipline.send(location)
         }
     }
     
