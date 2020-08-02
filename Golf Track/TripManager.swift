@@ -8,16 +8,22 @@
 import Combine
 import CoreLocation
 
-class TripManager {
+protocol TripManagerProtocol {
+    var locationPipline: PassthroughSubject<CLLocation, Never> { get }
+    func startTrip()
+    func endTrip()
+}
+
+class TripManager: TripManagerProtocol {
     private var startDate: Date?
     private var distance: Measurement<UnitLength>?
     private var locationList: [CLLocation] = []
-    private var locationManager: LocationManagerable
+    private var locationManager: LocationManager
     private var cancelableLocationPublisher: AnyCancellable?
     
     let locationPipline = PassthroughSubject<CLLocation, Never>()
     
-    init(locationManager: LocationManagerable = LocationManager.shared) {
+    init(locationManager: LocationManager = LocationManager.shared) {
         self.locationManager = locationManager
     }
     

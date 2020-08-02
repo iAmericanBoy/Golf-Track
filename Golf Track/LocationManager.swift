@@ -14,15 +14,7 @@ enum LocationError: Error {
     case error(Error)
 }
 
-protocol LocationManagerable {
-    var completion: ((Result<Void, LocationError>) -> Void)? { get set }
-    var publisher: AnyPublisher <CLLocation, LocationError> { get }
-    func requestPermission()
-    func startLocationUpdates()
-    func endLocationUpdates()
-}
-
-class LocationManager: NSObject, LocationManagerable {
+class LocationManager: NSObject {
     private static var manager = CLLocationManager()
 
     static let shared = LocationManager()
