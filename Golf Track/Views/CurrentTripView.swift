@@ -12,6 +12,7 @@ struct CurrentTripView: View {
 
     var body: some View {
         VStack {
+            Text(viewModel.seconds)
             Text(viewModel.locations)
             HStack {
                 Button("Start", action: startTrip)
@@ -33,6 +34,6 @@ struct CurrentTripView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        CurrentTripView()
+        CurrentTripView(viewModel: CurrentTripViewModel(tripManager: MockTripManager()))
     }
 }
