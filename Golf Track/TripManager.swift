@@ -77,3 +77,11 @@ class TripManager: TripManagerProtocol {
         }
     }
 }
+
+struct MockTripManager: TripManagerProtocol {
+    var locationPipline = PassthroughSubject<CLLocation, Never>()
+    
+    func startTrip() {}
+    
+    func endTrip() {}
+}
