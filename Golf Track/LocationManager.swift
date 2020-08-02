@@ -5,8 +5,8 @@
 //  Created by Dominic Lanzillotta on 7/26/20.
 //
 
-import CoreLocation
 import Combine
+import CoreLocation
 
 enum LocationError: Error {
     case notAllowed
@@ -14,13 +14,21 @@ enum LocationError: Error {
     case error(Error)
 }
 
-class LocationManager: NSObject {
+protocol LocationManagerable {
+    var completion: ((Result<Void, LocationError>) -> Void)? { get set }
+    var publisher: AnyPublisher <CLLocation, LocationError> { get }
+    func requestPermission()
+    func startLocationUpdates()
+    func endLocationUpdates()
+}
+
+class LocationManager: NSObject, LocationManagerable {
     private static var manager = CLLocationManager()
 
     static let shared = LocationManager()
 
     var completion: ((Result<Void, LocationError>) -> Void)?
-    
+
     private let locationPublisher: PassthroughSubject<CLLocation, LocationError>
     var publisher: AnyPublisher<CLLocation, LocationError>
 
@@ -29,7 +37,7 @@ class LocationManager: NSObject {
         publisher = locationPublisher.eraseToAnyPublisher()
 
         super.init()
-        
+
         LocationManager.manager.delegate = self
     }
 
@@ -82,7 +90,7 @@ extension LocationManager: CLLocationManagerDelegate {
             locationPublisher.send(newLocation)
         }
     }
-    
+
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         locationPublisher.send(completion: Subscribers.Completion.failure(LocationError.error(error)))
     }

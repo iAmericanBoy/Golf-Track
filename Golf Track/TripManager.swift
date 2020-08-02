@@ -12,12 +12,12 @@ class TripManager {
     private var startDate: Date?
     private var distance: Measurement<UnitLength>?
     private var locationList: [CLLocation] = []
-    private var locationManager: LocationManager
+    private var locationManager: LocationManagerable
     private var cancelableLocationPublisher: AnyCancellable?
     
     let locationPipline = PassthroughSubject<CLLocation, Never>()
     
-    init(locationManager: LocationManager = LocationManager.shared) {
+    init(locationManager: LocationManagerable = LocationManager.shared) {
         self.locationManager = locationManager
     }
     
