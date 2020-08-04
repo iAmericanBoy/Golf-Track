@@ -10,6 +10,8 @@ import CoreLocation
 
 protocol TripManagerProtocol {
     var locationPipline: PassthroughSubject<CLLocation, Never> { get }
+    var distancePipline: PassthroughSubject<Measurement<UnitLength>, Never> { get }
+    var speedPipline: PassthroughSubject<Measurement<UnitSpeed>, Never> { get }
     func startTrip()
     func endTrip()
 }
@@ -18,15 +20,17 @@ class TripManager: TripManagerProtocol {
     // MARK: Trip Information
     
     private var startDate: Date?
-    private var distance: Measurement<UnitLength> = Measurement(value: 0, unit: UnitLength.meters)
     
-    var locationList: [CLLocation] = [] {
+    private var locationList: [CLLocation] = [] {
         didSet {
             calculateDistance(locationList.last)
         }
     }
     
+    /// Variable to store the last collected Location. Used for distance calculation
     private var lastLocation: CLLocation?
+    private var distance: Measurement<UnitLength> = Measurement(value: 0, unit: UnitLength.meters)
+    private var speed: Measurement<UnitSpeed> = Measurement(value: 0, unit: UnitSpeed.metersPerSecond)
     
     // MARK: Memebers
     
@@ -37,6 +41,7 @@ class TripManager: TripManagerProtocol {
     
     let locationPipline = PassthroughSubject<CLLocation, Never>()
     let distancePipline = PassthroughSubject<Measurement<UnitLength>, Never>()
+    let speedPipline = PassthroughSubject<Measurement<UnitSpeed>, Never>()
     
     // MARK: init
     
@@ -86,6 +91,7 @@ class TripManager: TripManagerProtocol {
         cancelableLocationPublisher = locationManager.publisher.sink(receiveCompletion: onLocationPublisherCompletion) { location in
             self.locationList.append(location)
             self.locationPipline.send(location)
+            self.speedPipline.send(Measurement(value: location.speed, unit: UnitSpeed.metersPerSecond))
         }
     }
     
@@ -110,6 +116,8 @@ class TripManager: TripManagerProtocol {
 }
 
 struct MockTripManager: TripManagerProtocol {
+    var distancePipline = PassthroughSubject<Measurement<UnitLength>, Never>()
+    var speedPipline = PassthroughSubject<Measurement<UnitSpeed>, Never>()
     var locationPipline = PassthroughSubject<CLLocation, Never>()
     
     func startTrip() {}

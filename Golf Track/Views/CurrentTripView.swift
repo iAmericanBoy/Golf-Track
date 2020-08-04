@@ -12,8 +12,10 @@ struct CurrentTripView: View {
 
     var body: some View {
         VStack {
-            Text(viewModel.seconds)
+            Text(viewModel.time)
             Text(viewModel.locations)
+            Text(viewModel.distance)
+            Text(viewModel.speed)
             HStack {
                 Button("Start", action: startTrip)
                 Spacer()
