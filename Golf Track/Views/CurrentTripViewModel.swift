@@ -13,6 +13,9 @@ class CurrentTripViewModel: ObservableObject {
 
     @Published var locations: String = ""
     @Published private var secondsElapsed = 0.0
+    @Published private var speed: Double = "0 mph"
+    @Published private var distance: Double = "0 miles"
+
     var seconds: String {
         return format(secondsElapsed)
     }

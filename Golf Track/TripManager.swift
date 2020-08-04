@@ -15,17 +15,36 @@ protocol TripManagerProtocol {
 }
 
 class TripManager: TripManagerProtocol {
+    // MARK: Trip Information
+    
     private var startDate: Date?
-    private var distance: Measurement<UnitLength>?
-    private var locationList: [CLLocation] = []
+    private var distance: Measurement<UnitLength> = Measurement(value: 0, unit: UnitLength.meters)
+    
+    var locationList: [CLLocation] = [] {
+        didSet {
+            calculateDistance(locationList.last)
+        }
+    }
+    
+    private var lastLocation: CLLocation?
+    
+    // MARK: Memebers
+    
     private var locationManager: LocationManager
     private var cancelableLocationPublisher: AnyCancellable?
     
+    // MARK: Piplines
+    
     let locationPipline = PassthroughSubject<CLLocation, Never>()
+    let distancePipline = PassthroughSubject<Measurement<UnitLength>, Never>()
+    
+    // MARK: init
     
     init(locationManager: LocationManager = LocationManager.shared) {
         self.locationManager = locationManager
     }
+    
+    // MARK: Public
     
     /// Checks if Location permission has been given and Starts Trip after permission was givven
     func startTrip() {
@@ -46,9 +65,12 @@ class TripManager: TripManagerProtocol {
         end()
     }
     
+    // MARK: Private
+    
     private func start() {
         locationManager.startLocationUpdates()
         startDate = Date()
+        distance = Measurement(value: 0, unit: UnitLength.meters)
         subscibeToLocationUpdates()
     }
     
@@ -75,6 +97,15 @@ class TripManager: TripManagerProtocol {
             print(error)
             // handle better
         }
+    }
+    
+    private func calculateDistance(_ newlocation: CLLocation?) {
+        if let newLocation = newlocation {
+            let delta = lastLocation?.distance(from: newLocation) ?? 0
+            distance = distance + Measurement(value: delta, unit: UnitLength.meters)
+            distancePipline.send(distance)
+        }
+        lastLocation = locationList.last
     }
 }
 
