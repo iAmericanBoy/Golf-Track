@@ -15,6 +15,11 @@ class CurrentTripViewModel: ObservableObject {
     @Published private var secondsElapsed = 0.0
     @Published private var currentSpeed: Measurement<UnitSpeed> = Measurement(value: 0, unit: .metersPerSecond)
     @Published private var currentDistance: Measurement<UnitLength> = Measurement(value: 0, unit: .meters)
+    @Published private var currentAltitude: Measurement<UnitLength> = Measurement(value: 0, unit: .meters)
+
+    var altitude: String {
+        return format(currentAltitude)
+    }
 
     var time: String {
         return format(secondsElapsed)

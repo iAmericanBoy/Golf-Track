@@ -16,6 +16,7 @@ struct CurrentTripView: View {
             Text(viewModel.locations)
             Text(viewModel.distance)
             Text(viewModel.speed)
+            Text(viewModel.altitude)
             HStack {
                 Button("Start", action: startTrip)
                 Spacer()

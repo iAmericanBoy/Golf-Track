@@ -42,6 +42,7 @@ class TripManager: TripManagerProtocol {
     let locationPipline = PassthroughSubject<CLLocation, Never>()
     let distancePipline = PassthroughSubject<Measurement<UnitLength>, Never>()
     let speedPipline = PassthroughSubject<Measurement<UnitSpeed>, Never>()
+    let altitudePipline = PassthroughSubject<Measurement<UnitLength>, Never>()
     
     // MARK: init
     
@@ -92,6 +93,7 @@ class TripManager: TripManagerProtocol {
             self.locationList.append(location)
             self.locationPipline.send(location)
             self.speedPipline.send(Measurement(value: location.speed, unit: UnitSpeed.metersPerSecond))
+            self.altitudePipline.send(Measurement(value: location.altitude, unit: UnitLength.meters))
         }
     }
     
