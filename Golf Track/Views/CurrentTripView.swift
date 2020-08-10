@@ -12,11 +12,17 @@ struct CurrentTripView: View {
 
     var body: some View {
         VStack {
-            Text(viewModel.time)
-            Text(viewModel.locations)
-            Text(viewModel.distance)
-            Text(viewModel.speed)
-            Text(viewModel.altitude)
+            ZStack {
+                MapView()
+                VStack {
+                    Text(viewModel.time)
+                    Text(viewModel.locations)
+                    Text(viewModel.distance)
+                    Text(viewModel.speed)
+                    Text(viewModel.altitude)
+                    Spacer()
+                }
+            }
             HStack {
                 Button("Start", action: startTrip)
                 Spacer()
