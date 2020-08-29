@@ -13,7 +13,7 @@ struct CurrentTripView: View {
     var body: some View {
         VStack {
             ZStack {
-                MapView()
+                MapContainerView()
                 VStack {
                     Text(viewModel.time)
                     Text(viewModel.locations)

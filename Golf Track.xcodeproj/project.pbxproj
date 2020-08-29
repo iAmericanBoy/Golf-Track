@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B67024F024E212CF006E686B /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67024EF24E212CF006E686B /* MapView.swift */; };
+		B67024F024E212CF006E686B /* MapContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67024EF24E212CF006E686B /* MapContainerView.swift */; };
 		B69EED7724CE0F32007E010A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69EED7624CE0F32007E010A /* AppDelegate.swift */; };
 		B69EED7924CE0F32007E010A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69EED7824CE0F32007E010A /* SceneDelegate.swift */; };
 		B69EED7B24CE0F32007E010A /* CurrentTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69EED7A24CE0F32007E010A /* CurrentTripView.swift */; };
@@ -31,7 +31,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B67024EF24E212CF006E686B /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		B67024EF24E212CF006E686B /* MapContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapContainerView.swift; sourceTree = "<group>"; };
 		B69EED7324CE0F32007E010A /* Golf Track.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Golf Track.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B69EED7624CE0F32007E010A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B69EED7824CE0F32007E010A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -130,7 +130,7 @@
 			children = (
 				B69EED7A24CE0F32007E010A /* CurrentTripView.swift */,
 				B69EEDA824CE18F2007E010A /* CurrentTripViewModel.swift */,
-				B67024EF24E212CF006E686B /* MapView.swift */,
+				B67024EF24E212CF006E686B /* MapContainerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -235,7 +235,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B67024F024E212CF006E686B /* MapView.swift in Sources */,
+				B67024F024E212CF006E686B /* MapContainerView.swift in Sources */,
 				B69EED7724CE0F32007E010A /* AppDelegate.swift in Sources */,
 				B69EED7924CE0F32007E010A /* SceneDelegate.swift in Sources */,
 				B69FE25624CE49B3005341A9 /* TripManager.swift in Sources */,
