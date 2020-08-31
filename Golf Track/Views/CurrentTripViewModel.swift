@@ -11,7 +11,6 @@ import SwiftUI
 class CurrentTripViewModel: ObservableObject {
     // MARK: Publishers
 
-    @Published var locations: String = ""
     @Published private var secondsElapsed = 0.0
     @Published private var currentSpeed: Measurement<UnitSpeed> = Measurement(value: 0, unit: .metersPerSecond)
     @Published private var currentDistance: Measurement<UnitLength> = Measurement(value: 0, unit: .meters)
@@ -36,7 +35,6 @@ class CurrentTripViewModel: ObservableObject {
     // MARK: Members
 
     private let tripManager: TripManagerProtocol
-    private var locationSubscriber: AnyCancellable?
     private var distanceSubscriber: AnyCancellable?
     private var speedSubscriber: AnyCancellable?
     private var timer: Timer = Timer()
@@ -51,10 +49,7 @@ class CurrentTripViewModel: ObservableObject {
 
     func startTrip() {
         secondsElapsed = 0
-        locationSubscriber = tripManager.locationPipline.sink { _ in
-//            locations.append("Lat: \(newLocation.coordinate.latitude.description)")
-//            locations.append("Long: \(newLocation.coordinate.longitude.description)")
-        }
+
         distanceSubscriber = tripManager.distancePipline.sink { [self] newDistance in
             currentDistance = newDistance
         }
