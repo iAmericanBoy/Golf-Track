@@ -9,6 +9,8 @@ import MapKit
 import SwiftUI
 
 struct MapContainerView: UIViewRepresentable {
+    @Binding var overlays: [MKOverlay]
+
     func makeUIView(context: Context) -> MKMapView {
         let mapView = MKMapView()
         mapView.delegate = context.coordinator
@@ -17,7 +19,11 @@ struct MapContainerView: UIViewRepresentable {
         return mapView
     }
 
-    func updateUIView(_ view: MKMapView, context: Context) {}
+    func updateUIView(_ view: MKMapView, context: Context) {
+        if view.overlays.count != overlays.count {
+            view.addOverlays(overlays)
+        }
+    }
 
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
@@ -28,6 +34,16 @@ struct MapContainerView: UIViewRepresentable {
 
         init(_ parent: MapContainerView) {
             self.parent = parent
+        }
+
+        func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+            guard let polyline = overlay as? MKPolyline else {
+                return MKOverlayRenderer(overlay: overlay)
+            }
+            let renderer = MKPolylineRenderer(polyline: polyline)
+            renderer.strokeColor = .blue
+            renderer.lineWidth = 3
+            return renderer
         }
     }
 }
