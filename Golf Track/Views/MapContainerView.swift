@@ -50,16 +50,16 @@ struct MapContainerView: UIViewRepresentable {
 
 struct MapContainerView_Previews: PreviewProvider {
     static var previews: some View {
-        MapContainerView()
+        MapContainerView(overlays: .constant(TestingVariations.simpleLine))
     }
 }
 
-extension MKPointAnnotation {
-    static var example: MKPointAnnotation {
-        let annotation = MKPointAnnotation()
-        annotation.title = "London"
-        annotation.subtitle = "Home to the 2012 Summer Olympics."
-        annotation.coordinate = CLLocationCoordinate2D(latitude: 51.5, longitude: -0.13)
-        return annotation
+private extension MapContainerView_Previews {
+    struct TestingVariations {
+        static var simpleLine: [MKPolyline] {
+            let start = CLLocationCoordinate2D(latitude: CLLocationDegrees(39.976273), longitude: CLLocationDegrees(-83.005588))
+            let end = CLLocationCoordinate2D(latitude: CLLocationDegrees(39.976310), longitude: CLLocationDegrees(-83.005443))
+            return [MKPolyline(coordinates: [start, end], count: 2)]
+        }
     }
 }
