@@ -9,7 +9,7 @@ import MapKit
 import SwiftUI
 
 struct MapContainerView: UIViewRepresentable {
-    @Binding var overlays: [MKOverlay]
+    @ObservedObject var viewModel: MapContainerViewModel
 
     func makeUIView(context: Context) -> MKMapView {
         let mapView = MKMapView()
@@ -20,8 +20,8 @@ struct MapContainerView: UIViewRepresentable {
     }
 
     func updateUIView(_ view: MKMapView, context: Context) {
-        if view.overlays.count != overlays.count {
-            view.addOverlays(overlays)
+        if view.overlays.count != viewModel.overlays.count {
+            view.addOverlays(viewModel.overlays)
         }
     }
 
@@ -50,7 +50,7 @@ struct MapContainerView: UIViewRepresentable {
 
 struct MapContainerView_Previews: PreviewProvider {
     static var previews: some View {
-        MapContainerView(overlays: .constant(TestingVariations.simpleLine))
+        MapContainerView(viewModel: MapContainerViewModel(tripManager: MockTripManager()))
     }
 }
 
